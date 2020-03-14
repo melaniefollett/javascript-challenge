@@ -31,17 +31,22 @@ let button = d3.select("#filter-btn");
 button.on("click", function() {
 
     //Select user's input date
-    let inputElement = d3.select("#datetime");
+    let inputElement = d3.select("#input");
     let inputValue = inputElement.property("value");
     
     //Debug statement
-    //console.log(inputDate);
+    //console.log(inputValue);
 
     //Filter data based on input date
-    let filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
+    let filteredData = tableData.filter((sighting) => sighting.datetime === inputValue ||
+                                                        sighting.city === inputValue ||
+                                                        sighting.state === inputValue ||
+                                                        sighting.country === inputValue ||
+                                                        sighting.shape === inputValue
+    );
     
     //Debug statement
-    //console.log(filteredData);
+    console.log(filteredData);
     
     //Clear table
     d3.select("tbody").html("");
